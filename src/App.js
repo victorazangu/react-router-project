@@ -1,9 +1,10 @@
 import React from 'react';
-import { BrowserRouter,Route } from 'react-router-dom';
+import { BrowserRouter,Routes,Route} from 'react-router-dom';
 import NavBar from './components/NavBar';
 import Home from './components/Home';
 import About from './components/About';
-import Contact from './components/Contact'
+import Contact from './components/Contact';
+import Card from './components/Card';
 
 
 function App() {
@@ -11,9 +12,16 @@ function App() {
     <BrowserRouter>
       <div className="App">
         <NavBar />
-        <Route exact path='/' component={Home} />
-        <Route path='/about' component={About} />
-        <Route path='/contact' component={Contact} />
+        
+           <Routes>
+                 <Route exact path='/' element={<Home/>} />
+                 <Route path='/about' element={<About />} />
+                 <Route path='/contact' element={<Contact />} />
+                 <Route path='/card/:user' element={<Card/>} />
+            </Routes>       
+        
+       
+        
        </div>
     </BrowserRouter>
     
