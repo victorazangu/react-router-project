@@ -9,8 +9,15 @@ class Card extends React.Component{
     //     let user = this.props.match.params.user;
     //     this.setState({ user })
     // }
+    onButtonClick = () => {
+        let id = this.props.card.id
+        this.props.deletecard(id)
+        this.props.history.push('/contact')
+        
+    }
     render() {
        // const { user } = this.state
+        
         const { title, body } = this.props.card;
         return (
             <div
@@ -18,10 +25,14 @@ class Card extends React.Component{
                 style={{marginTop:'80px'}}
             >
                 <h3 className='ui header'>{title}</h3>
-                <p>{ body }</p>
+                <p>{body}</p>
+                <button
+                    className='ui primary right floated button'
+                    onClick={this.onButtonClick}
+                >delete</button>
             
             </div>
-        )
+        ) 
     }
 }
 
@@ -32,4 +43,12 @@ const mapStateToprops = (state, ownProps) => {
     }
     
 }
-export default connect(mapStateToprops)(Card);
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        deletecard:(id)=>{dispatch({type:'DELETE_CARD',id})}
+    }
+    
+}
+
+export default connect(mapStateToprops,mapDispatchToProps)(Card);

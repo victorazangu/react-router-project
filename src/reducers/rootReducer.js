@@ -6,8 +6,21 @@ const initialState = {
         
     ]
 }
-const rootReducer = (state=initialState, action) => {
-    return state;
+const rootReducer = (state = initialState, action) => {
+    
+    switch (action.type) {
+        case 'DELETE_CARD':
+            let newCard = state.cards.filter((card) => {
+                return action.id !==card.id
+            })
+            return {
+                ...state,
+                cards:newCard
+            }
+        default:
+            return state;
+   }
 }
 
 export default rootReducer;
+ 
