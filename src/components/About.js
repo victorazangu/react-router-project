@@ -11,7 +11,7 @@ const About = () => {
                      </div>
                 </div>
             </div>
-            
+               
             <div
             className='ui raised very padded text container segment'
             style={{marginTop:'80px'}}
